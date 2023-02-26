@@ -36,3 +36,18 @@ const vocab = {
 }
 
 ```
+
+1. One vocab is chosen as the correctAnsnwer.
+2. Two other vocabs are chosen as FalseAnswers.
+3. The correctAnswers's word is displayed.
+4. The correct answer's and the false answers' picture are displayed.
+5. The correct answer's audio is played.
+6. User can then click on the right answer.
+7. If click on wrong answer, an x appears on the wrong picture and a check appears on the correct answer.
+8. Game is resetted 
+9. If click on the right picture, a check appears on the picture.
+10. A new vocab is chosen
+11. Process repeats until all vocab are used as correct answers. 
+
+
+hero wars

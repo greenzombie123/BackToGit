@@ -1,3 +1,25 @@
 #app{
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    height: 40vh;
+}
+
+.wordDisplay{
+    height: 2rem;
+    width: 4rem;
+}
+
+.pictureDisplay{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.picture{
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid black;
 }
