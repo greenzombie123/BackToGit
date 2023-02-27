@@ -9,6 +9,7 @@
 .wordDisplay{
     height: 2rem;
     width: 4rem;
+    border: 1px solid black;
 }
 
 .pictureDisplay{

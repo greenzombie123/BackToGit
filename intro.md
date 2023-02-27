@@ -1,53 +1,40 @@
-## There are a number of objects
+###  Monster Vocab
 
-1 object is chosen to be the answer of the question. 2 other object are chosen afterward as wrong answers.
-Pictures of the items appear on the screen and the word of the answer appears on the screen.
-The word of the answer is pronounced.
-If the user click on the right picture, a check mark appears on the picture. For all the other pictures, an x appears if they are pressed.
-The scene is cleared and a new object is chosen as the answer. 
+In this game, the user will see three pictures appear on the screen and the word of one of the pictures voiced. The user must 
+click on the picture of the voiced word. If they click on the correct word, three new pictures will show up and the process repeats. If they click 
+on the wrong picture, the game resets. 
 
-List of answer objects
-
-1. Randomly choose an `vocab` object.
-2. Assign it to a `answer` variable
-3. Choose two other random `vocab` objects
-4. Assign push them into `wrongAnswers` array variable
-5. Get reference of 3 divs (`pictureDiv1` and etc)  and 1 word div (`wordDiv`).
-6. Push `answer` and `wrongAnswers` into a `possibleAnswers` array.
-7. Randomly take out one item from `possibleAnswers` 
-8. Assign the value of the `picture` prop to the div's img attribute.
-9. Attach an event handler that calls an arrow function that calls `chooseAnswer(word)` with the `word` prop passed as an argument.
-10. Do the same for the other items in the `possibleAnswers` array.
-11. Create audio element using `answer`'s `sound` prop. 
-12. Wait for 1 second.
-13. Play the sound clip.
-14. If user click wrong picture, an X appears on it. (add classname to `pictureDuv`)
-15. If user clicks on right picture, a check appears.
-16. Wait for a second
-17. A new batch of answers appear.
-
-```javascript
-
-const vocab = {
-    word,
-    picture,
-    sound,
-    isDone,
-}
-
-```
-
-1. One vocab is chosen as the correctAnsnwer.
-2. Two other vocabs are chosen as FalseAnswers.
-3. The correctAnswers's word is displayed.
-4. The correct answer's and the false answers' picture are displayed.
-5. The correct answer's audio is played.
-6. User can then click on the right answer.
-7. If click on wrong answer, an x appears on the wrong picture and a check appears on the correct answer.
-8. Game is resetted 
-9. If click on the right picture, a check appears on the picture.
-10. A new vocab is chosen
-11. Process repeats until all vocab are used as correct answers. 
+### Process
 
 
-hero wars
+1. A start button appears on the screen.
+2. When pressed, the game renders three pictures and a word of the correct ansnwer and a sound clip played.
+3. User clicks on a picture.
+4. If correct picture, a check mark briefly appears on the picture.
+   1. Repeat step 2 
+   2. If all pictures were used as answers, a winner display is shown with a button to restart also appearing.
+   3. 2. If press restart, go to step 2.
+5. If wrong picture, an x briefly appears on the picture.
+   1. A loser display is shown with a button to restart also appearing.
+   2. If press restart, go to step 2.
+
+## MVP
+A game that renders a start button in the beginning. When pressed, 3 pictures and a words show up and a sound clip is played. When the correct picture is click, a brief check mark is shown and a new problem is rendered. If the wrong picture is clicked, an x is briefly shown and a gameover display and restart button is shown. 
+
+## Nice To Have
+1. Styling 
+2. When click wrong picture, the check mark is shown on the correct picture. 
+
+## Smaller Components
+
+1. Start Screen Interface
+   1. Start Screen Button Click Input
+2. Game Scene Interface
+   1. Word Display
+   2. Three Pictures
+   3. Sound
+   4. Picture Click Input
+   5. Checkmark Render
+   6. X Render
+3. Restart Scene
+   1. Restart Button Click Input
