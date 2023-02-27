@@ -19,7 +19,33 @@
 }
 
 .picture{
+    position: relative;
     width: 6rem;
     height: 6rem;
     border: 1px solid black;
+}
+
+.picture.correct::after{
+    content: '✓';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    color: greenyellow;
+    font-size: 2rem;
+}
+
+.picture.wrong::after{
+    content: 'X';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    color: red;
+    font-size: 2rem;
+}
+
+.disabled{
+    pointer-events: none;
+    background: none;
 }
