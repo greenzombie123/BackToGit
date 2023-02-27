@@ -1,3 +1,10 @@
-import {vocabModel} from './modules/model.js'
+import {VocabModel, vocabList} from './modules/model.js'
+import { Controller } from './modules/controller.js';
 
-console.log(vocabModel);
+const vocabModel = new VocabModel(vocabList)
+const controller = new Controller(vocabModel)
+
+controller.setCorrectAnswer()
+console.log(controller);
+
+controller
