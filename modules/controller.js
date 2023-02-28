@@ -31,6 +31,14 @@ export class Controller {
     console.log(this.vocabmodel.possibleAnswers);
   }
 
+  getCorrectWord(){
+    return this.vocabmodel.correctAnswer.word
+  }
+
+  getPossibleAnswers(){
+    return this.vocabmodel.possibleAnswers
+  }
+
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
     console.log(this.vocabmodel);
@@ -102,12 +110,17 @@ export class Controller {
     console.log("New Game has started");
   }
 
+  //Start a new game
   startNewGame(){
-    this.startNewRound
+    this.startNewRound()
   }
 
+  //Initialize all vaules to start the game
   init(){
+    // Get all references of divs
     this.view.init(this)
+    this.startNewGame()
+    this.view.render()
   }
 }
 
