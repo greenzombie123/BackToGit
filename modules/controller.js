@@ -2,6 +2,7 @@ export class Controller {
   constructor(vocabmodel, view) {
     this.vocabmodel = vocabmodel;
     this.view = view;
+    this.wasClicked = false;
   }
 
   //Randomly set a vocab as the correct answer
@@ -41,7 +42,6 @@ export class Controller {
 
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
-    console.log(this.vocabmodel);
     const vm = this.vocabmodel
     const {isWinner, isGameOver} = vm;
     if (isWinner || isGameOver) {
@@ -75,6 +75,7 @@ export class Controller {
       console.log("Winner");
     } else {
       this.startNewRound();
+      this.view.render()
     }
   }
 
