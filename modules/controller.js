@@ -1,6 +1,7 @@
 export class Controller {
-  constructor(vocabmodel) {
+  constructor(vocabmodel, view) {
     this.vocabmodel = vocabmodel;
+    this.view = view;
   }
 
   //Randomly set a vocab as the correct answer
@@ -103,6 +104,10 @@ export class Controller {
 
   startNewGame(){
     this.startNewRound
+  }
+
+  init(){
+    this.view.init(this)
   }
 }
 
