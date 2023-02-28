@@ -9,9 +9,9 @@ class vocab {
 
 export const vocabList = [];
 
-vocabList.push(new vocab("apple", "", ""));
-vocabList.push(new vocab("banana", "", ""));
-vocabList.push(new vocab("cherry", "", ""));
+vocabList.push(new vocab("apple", "assets/apple.jpg", ""));
+vocabList.push(new vocab("banana", "assets/banana.jpeg", ""));
+vocabList.push(new vocab("cherry", "assets/cherry.avif", ""));
 // vocabList.push(new vocab("grapes", "", ""));
 // vocabList.push(new vocab("lemon", "", ""));
 // vocabList.push(new vocab("grapefruit", "", ""));
