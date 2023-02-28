@@ -18,7 +18,21 @@ export class View {
         this.pics[count].dataset.word = vocabs[count].word;
         count++
     })
+
+    const sound = this.controller.getSound()
+    this.playSound(sound)
   }
+
+  playSound = (sound) => {
+    const audio = new Audio(sound);
+    console.log(sound, audio);
+    audio.addEventListener('canplaythrough', ()=>{
+        console.log('ok!');
+        audio.play();
+    })
+
+    
+  };
 
   init(controller) {
     this.controller = controller;

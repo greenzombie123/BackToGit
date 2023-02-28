@@ -40,6 +40,10 @@ export class Controller {
     return this.vocabmodel.possibleAnswers
   }
 
+  getSound(){
+    return this.vocabmodel.correctAnswer.sound
+  }
+
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
     const vm = this.vocabmodel

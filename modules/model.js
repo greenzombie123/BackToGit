@@ -9,9 +9,9 @@ class vocab {
 
 export const vocabList = [];
 
-vocabList.push(new vocab("apple", "assets/apple.jpg", ""));
-vocabList.push(new vocab("banana", "assets/banana.jpeg", ""));
-vocabList.push(new vocab("cherry", "assets/cherry.avif", ""));
+vocabList.push(new vocab("apple", "assets/apple.jpg", "assets/Sound/Apple.m4a"));
+vocabList.push(new vocab("banana", "assets/banana.jpeg", "assets/Sound/Banana.m4a"));
+vocabList.push(new vocab("cherry", "assets/cherry.avif", "assets/Sound/Cherry.m4a"));
 // vocabList.push(new vocab("grapes", "", ""));
 // vocabList.push(new vocab("lemon", "", ""));
 // vocabList.push(new vocab("grapefruit", "", ""));
@@ -25,3 +25,5 @@ export class VocabModel {
     this.vocabList = vocabList;
   }
 }
+
+const clip = "apple.m4a";
