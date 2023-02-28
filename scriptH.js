@@ -4,7 +4,11 @@ import { Controller } from './modules/controller.js';
 const vocabModel = new VocabModel(vocabList)
 const controller = new Controller(vocabModel)
 
-controller.setCorrectAnswer()
-console.log(controller);
+window.controller = controller;
 
-controller
+controller.startNewRound()
+const event = {currentTarget:{dataset:{word:'banana'}}}
+//console.log(controller);
+//controller.checkAnswer(event)
+
+
