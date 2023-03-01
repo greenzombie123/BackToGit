@@ -94,4 +94,3 @@ const shuffleArray = (array) => {
   }
 };
 
-//this.controller.checkAnswer

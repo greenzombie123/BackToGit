@@ -2,7 +2,6 @@ export class Controller {
   constructor(vocabmodel, view) {
     this.vocabmodel = vocabmodel;
     this.view = view;
-    this.wasClicked = false;
   }
 
   //Randomly set a vocab as the correct answer
