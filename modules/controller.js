@@ -32,22 +32,22 @@ export class Controller {
     console.log(this.vocabmodel.possibleAnswers);
   }
 
-  getCorrectWord(){
-    return this.vocabmodel.correctAnswer.word
+  getCorrectWord() {
+    return this.vocabmodel.correctAnswer.word;
   }
 
-  getPossibleAnswers(){
-    return this.vocabmodel.possibleAnswers
+  getPossibleAnswers() {
+    return this.vocabmodel.possibleAnswers;
   }
 
-  getSound(){
-    return this.vocabmodel.correctAnswer.sound
+  getSound() {
+    return this.vocabmodel.correctAnswer.sound;
   }
 
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
-    const vm = this.vocabmodel
-    const {isWinner, isGameOver} = vm;
+    const vm = this.vocabmodel;
+    const { isWinner, isGameOver } = vm;
     if (isWinner || isGameOver) {
       console.log("NOPE!");
       return;
@@ -58,9 +58,11 @@ export class Controller {
     if (isCorrect) {
       console.log("Right!");
       this.setIsAnswered();
-      this.checkWinner();
+      this.view.giveFeedBack(isCorrect, event);
+      setTimeout(() => this.checkWinner(event), 1000);
     } else {
       console.log("LOSER!");
+      this.view.giveFeedBack(isCorrect, event);
       this.setIsGameOver();
     }
   };
@@ -80,6 +82,7 @@ export class Controller {
     } else {
       this.startNewRound();
       this.view.render()
+      this.view.removeFeedback();
     }
   }
 
@@ -109,23 +112,23 @@ export class Controller {
     vm.possibleAnswers = [];
     vm.isGameOver = false;
     vm.isWinner = false;
-    vm.vocabList.forEach(vocab => vocab.isAnswered = false)
+    vm.vocabList.forEach((vocab) => (vocab.isAnswered = false));
     console.log(vm.vocabList);
-    this.startNewRound()
+    this.startNewRound();
     console.log("New Game has started");
   }
 
   //Start a new game
-  startNewGame(){
-    this.startNewRound()
+  startNewGame() {
+    this.startNewRound();
   }
 
   //Initialize all vaules to start the game
-  init(){
+  init() {
     // Get all references of divs
-    this.view.init(this)
-    this.startNewGame()
-    this.view.render()
+    this.view.init(this);
+    this.startNewGame();
+    this.view.render();
   }
 }
 
