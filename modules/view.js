@@ -65,11 +65,37 @@ export class View {
       if (pic.classList.contains("correct")) pic.classList.toggle("correct");
       if (pic.classList.contains("wrong")) pic.classList.toggle("wrong");
     });
-    this.placeCover()
+    this.placeCover();
   }
 
   clickPictureHandler(event) {
     this.controller.checkAnswer(event);
+  }
+
+  renderStartScene() {
+    const app = document.querySelector("#app");
+    const html = `<div class="startScene">
+    <div class="title">Monster Vocab</div>
+    <button class="startButton">Start</button>
+  </div>`;
+    app.insertAdjacentHTML("afterbegin", html);
+
+    const button = app.querySelector(".startScene button");
+    button.addEventListener("click", (event) =>
+      this.startButtonClickHandler(event)
+    );
+  }
+
+  startButtonClickHandler() {
+    this.clearStartScene();
+    this.controller.startNewGame();
+    this.render();
+  }
+
+  clearStartScene() {
+    const startScene = document.querySelector(".startScene");
+    console.log(startScene);
+    startScene.classList.toggle("hide");
   }
 
   init(controller) {
@@ -79,8 +105,10 @@ export class View {
     this.wordDisplay = document.querySelector(".wordDisplay");
 
     this.pics.forEach((pic) => {
-      pic.addEventListener("click", (event)=>this.clickPictureHandler(event));
+      pic.addEventListener("click", (event) => this.clickPictureHandler(event));
     });
+
+    this.renderStartScene();
     console.log(this.pics, this.wordDisplay);
   }
 }
@@ -93,4 +121,3 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
 };
-

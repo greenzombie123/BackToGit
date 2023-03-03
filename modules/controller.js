@@ -80,7 +80,7 @@ export class Controller {
       console.log("Winner");
     } else {
       this.startNewRound();
-      this.view.render()
+      this.view.render();
       this.view.removeFeedback();
     }
   }
@@ -126,8 +126,8 @@ export class Controller {
   init() {
     // Get all references of divs
     this.view.init(this);
-    this.startNewGame();
-    this.view.render();
+    //this.startNewGame();
+    // this.view.render();
   }
 }
 

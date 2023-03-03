@@ -11,9 +11,9 @@ window.controller = controller;
 
 //controller.startNewRound()
 //const event = {currentTarget:{dataset:{word:'banana'}}}
-const startButton = document.querySelector('button')
-startButton.addEventListener('click', ()=>controller.init())
-//controller.init()
+// const startButton = document.querySelector('button')
+// startButton.addEventListener('click', ()=>controller.init())
+controller.init()
 
 
 
