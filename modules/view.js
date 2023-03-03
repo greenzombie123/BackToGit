@@ -98,6 +98,34 @@ export class View {
     startScene.classList.toggle("hide");
   }
 
+  toggleGameOverSceneRendering() {
+    const gameOverScene = document.querySelector(".gameoverScene");
+    gameOverScene.classList.toggle("hide");
+  }
+
+  createGameOverScene() {
+    const app = document.querySelector("#app");
+    const html = `<div class="gameoverScene">
+    <div class="gameoverTitle">Game Over</div>
+    <button class="restartButton">Restart</button>
+  </div> `;
+    app.insertAdjacentHTML("afterbegin", html);
+
+    const button = app.querySelector(".restartButton");
+    button.addEventListener("click", (event) =>
+      this.restartButtonClickHandler(event)
+    );
+
+    const gameOverScene = document.querySelector(".gameoverScene");
+    gameOverScene.classList.toggle("hide");
+  }
+
+  restartButtonClickHandler() {
+    this.controller.resetGame()
+    this.toggleGameOverSceneRendering()
+    this.render();
+  }
+
   init(controller) {
     this.controller = controller;
 
@@ -107,6 +135,8 @@ export class View {
     this.pics.forEach((pic) => {
       pic.addEventListener("click", (event) => this.clickPictureHandler(event));
     });
+
+    this.createGameOverScene()
 
     this.renderStartScene();
     console.log(this.pics, this.wordDisplay);

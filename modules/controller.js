@@ -63,6 +63,10 @@ export class Controller {
       console.log("LOSER!");
       this.view.giveFeedBack(isCorrect, event);
       this.setIsGameOver();
+      setTimeout(() => {
+        this.view.removeFeedback();
+        this.view.toggleGameOverSceneRendering();
+      }, 1000);
     }
   };
 
@@ -126,8 +130,6 @@ export class Controller {
   init() {
     // Get all references of divs
     this.view.init(this);
-    //this.startNewGame();
-    // this.view.render();
   }
 }
 
