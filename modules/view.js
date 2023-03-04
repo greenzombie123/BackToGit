@@ -67,18 +67,16 @@ export class View {
     this.controller.checkAnswer(event);
   }
 
-  renderStartScene() {
+  createScene(text, selector, callback, scene) {
     const app = document.querySelector("#app");
-    const html = `<div class="startScene">
-    <div class="title">Monster Vocab</div>
-    <button class="startButton">Start</button>
-  </div>`;
-    app.insertAdjacentHTML("afterbegin", html);
+    app.insertAdjacentHTML("afterbegin", text);
 
-    const button = app.querySelector(".startScene button");
-    button.addEventListener("click", () =>
-      this.startButtonClickHandler()
-    );
+    const button = app.querySelector(selector);
+    //button.addEventListener("click", () => console.log(123));
+    button.addEventListener("click", () => callback());
+
+    const sceneNode = app.querySelector(scene);
+    sceneNode.classList.toggle("hide");
   }
 
   startButtonClickHandler() {
@@ -104,47 +102,13 @@ export class View {
     }
   }
 
-  createGameOverScene() {
-    const app = document.querySelector("#app");
-    const html = `<div class="gameoverScene">
-    <div class="gameoverTitle">Game Over</div>
-    <button class="restartButton">Restart</button>
-  </div> `;
-    app.insertAdjacentHTML("afterbegin", html);
-
-    const button = app.querySelector(".restartButton");
-    button.addEventListener("click", (event) =>
-      this.restartButtonClickHandler(event)
-    );
-
-    const gameOverScene = document.querySelector(".gameoverScene");
-    gameOverScene.classList.toggle("hide");
-  }
-
   restartButtonClickHandler() {
     const gameOverScene = document.querySelector(".gameoverScene");
     const winnerScene = document.querySelector(".winnerScene");
     this.controller.resetGame();
-    if(!gameOverScene.classList.contains('hide'))this.toggleScene("GameOver")
-    if(!winnerScene.classList.contains('hide'))this.toggleScene("Winner")
+    if (!gameOverScene.classList.contains("hide")) this.toggleScene("GameOver");
+    if (!winnerScene.classList.contains("hide")) this.toggleScene("Winner");
     this.render();
-  }
-
-  createWinnerScene() {
-    const app = document.querySelector("#app");
-    const html = `<div class="winnerScene">
-    <div class="gameoverTitle">Well Done!</div>
-    <button class="startNewGameButton f">Restart</button>
-  </div> `;
-    app.insertAdjacentHTML("afterbegin", html);
-
-    const button = app.querySelector(".startNewGameButton");
-    button.addEventListener("click", (event) =>
-      this.restartButtonClickHandler(event)
-    );
-
-    const winnerScene = document.querySelector(".winnerScene");
-    winnerScene.classList.toggle("hide");
   }
 
   init(controller) {
@@ -157,11 +121,36 @@ export class View {
       pic.addEventListener("click", (event) => this.clickPictureHandler(event));
     });
 
-    this.createGameOverScene();
-    this.createWinnerScene();
+    this.createScene(
+      `<div class="winnerScene">
+    <div class="gameoverTitle">Well Done!</div>
+    <button class="startNewGameButton f">Restart</button>
+  </div> `,
+      ".startNewGameButton",
+      this.restartButtonClickHandler.bind(this),
+      ".winnerScene"
+    );
 
-    this.renderStartScene();
-    console.log(this.pics, this.wordDisplay);
+    this.createScene(
+      `<div class="gameoverScene">
+    <div class="gameoverTitle">Game Over</div>
+    <button class="restartButton">Restart</button>
+  </div> `,
+      ".restartButton",
+      this.restartButtonClickHandler.bind(this),
+      ".gameoverScene"
+    );
+
+    this.createScene(
+      `<div class="startScene">
+    <div class="title">Monster Vocab</div>
+    <button class="startButton">Start</button>
+  </div>`,
+      ".startScene button",
+      () => this.startButtonClickHandler(),
+      ".startScene"
+    );
+    this.toggleScene("Start");
   }
 }
 
