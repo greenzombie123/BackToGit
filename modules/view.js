@@ -31,8 +31,6 @@ export class View {
 
     const sound = this.controller.getSound();
     this.playSound(sound);
-
-    this.clickDisabled = false;
   }
 
   playSound = (sound) => {
