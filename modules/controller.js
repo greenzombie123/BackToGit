@@ -43,6 +43,13 @@ export class Controller {
     return this.vocabmodel.correctAnswer.sound;
   }
 
+  getGameStatus() {
+    return {
+      isGameOver: this.vocabmodel.isGameOver,
+      isWinner: this.vocabmodel.isWinner,
+    };
+  }
+
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
     const vm = this.vocabmodel;
@@ -82,6 +89,8 @@ export class Controller {
     if (isWinner) {
       this.setIsWinner();
       console.log("Winner");
+      this.view.removeFeedback();
+      this.view.toggleWinnerSceneRendering();
     } else {
       this.startNewRound();
       this.view.render();

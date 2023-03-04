@@ -25,5 +25,3 @@ export class VocabModel {
     this.vocabList = vocabList;
   }
 }
-
-const clip = "apple.m4a";

@@ -135,6 +135,35 @@
   padding: 0.3rem 1rem;
 }
 
+.winnerScene {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  row-gap: 8rem;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color:gold
+}
+
+.winnerTitle {
+    font-family: "sandybold", Verdana, sans-serif;
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+    border: 5px solid rgb(158, 157, 157);
+    font-size: 4rem;
+    margin-top: 2rem;
+    background-color: rgb(241, 240, 237);
+  }
+  
+  .startNewGameButton {
+    font-size: 2rem;
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  }
+
 .hide {
   display: none;
 }

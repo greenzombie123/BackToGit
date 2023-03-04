@@ -103,6 +103,11 @@ export class View {
     gameOverScene.classList.toggle("hide");
   }
 
+  toggleWinnerSceneRendering() {
+    const winnerScene = document.querySelector(".winnerScene");
+    winnerScene.classList.toggle("hide");
+  }
+
   createGameOverScene() {
     const app = document.querySelector("#app");
     const html = `<div class="gameoverScene">
@@ -121,9 +126,28 @@ export class View {
   }
 
   restartButtonClickHandler() {
-    this.controller.resetGame()
-    this.toggleGameOverSceneRendering()
+    const { isGameOver, isWinner } = this.controller.getGameStatus();
+    this.controller.resetGame();
+    if (isGameOver) this.toggleGameOverSceneRendering();
+    if (isWinner) this.toggleWinnerSceneRendering();
     this.render();
+  }
+
+  createWinnerScene() {
+    const app = document.querySelector("#app");
+    const html = `<div class="winnerScene">
+    <div class="gameoverTitle">Well Done!</div>
+    <button class="startNewGameButton f">Restart</button>
+  </div> `;
+    app.insertAdjacentHTML("afterbegin", html);
+
+    const button = app.querySelector(".startNewGameButton");
+    button.addEventListener("click", (event) =>
+      this.restartButtonClickHandler(event)
+    );
+
+    const winnerScene = document.querySelector(".winnerScene");
+    winnerScene.classList.toggle("hide");
   }
 
   init(controller) {
@@ -136,7 +160,8 @@ export class View {
       pic.addEventListener("click", (event) => this.clickPictureHandler(event));
     });
 
-    this.createGameOverScene()
+    this.createGameOverScene();
+    this.createWinnerScene();
 
     this.renderStartScene();
     console.log(this.pics, this.wordDisplay);
