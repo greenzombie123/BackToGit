@@ -73,7 +73,6 @@ export class Controller {
     const list = this.vocabmodel.vocabList;
     const isWinner = list.every((vocab) => vocab.isAnswered);
     if (isWinner) {
-      console.log("Winner");
       this.view.removeFeedback();
       this.view.toggleScene('Winner');
     } else {
