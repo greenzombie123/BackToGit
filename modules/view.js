@@ -76,13 +76,13 @@ export class View {
     app.insertAdjacentHTML("afterbegin", html);
 
     const button = app.querySelector(".startScene button");
-    button.addEventListener("click", (event) =>
-      this.startButtonClickHandler(event)
+    button.addEventListener("click", () =>
+      this.startButtonClickHandler()
     );
   }
 
   startButtonClickHandler() {
-    this.toggleScene('Start');
+    this.toggleScene("Start");
     this.controller.startNewGame();
     this.render();
   }
@@ -93,14 +93,13 @@ export class View {
         const startScene = document.querySelector(".startScene");
         startScene.classList.toggle("hide");
         break;
-      case 'GameOver':
+      case "GameOver":
         const gameOverScene = document.querySelector(".gameoverScene");
         gameOverScene.classList.toggle("hide");
+        break;
       case "Winner":
         const winnerScene = document.querySelector(".winnerScene");
         winnerScene.classList.toggle("hide");
-        break;
-      default:
         break;
     }
   }
@@ -123,10 +122,11 @@ export class View {
   }
 
   restartButtonClickHandler() {
-    const { isGameOver, isWinner } = this.controller.getGameStatus();
+    const gameOverScene = document.querySelector(".gameoverScene");
+    const winnerScene = document.querySelector(".winnerScene");
     this.controller.resetGame();
-    if (isGameOver) this.toggleScene('GameOver');
-    if (isWinner) this.toggleScene('Winner');
+    if(!gameOverScene.classList.contains('hide'))this.toggleScene("GameOver")
+    if(!winnerScene.classList.contains('hide'))this.toggleScene("Winner")
     this.render();
   }
 

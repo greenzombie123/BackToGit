@@ -20,8 +20,6 @@ export class VocabModel {
   constructor(vocabList) {
     this.correctAnswer = null;
     this.possibleAnswers = [];
-    this.isWinner = false;
-    this.isGameOver = false;
     this.vocabList = vocabList;
   }
 }

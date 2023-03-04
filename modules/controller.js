@@ -52,24 +52,15 @@ export class Controller {
 
   //Check if picture's word matches correct Answer's word
   checkAnswer = (event) => {
-    const vm = this.vocabmodel;
-    const { isWinner, isGameOver } = vm;
-    if (isWinner || isGameOver) {
-      console.log("NOPE!");
-      return;
-    }
     const correctWord = this.vocabmodel.correctAnswer.word;
     const chosenWord = event.currentTarget.dataset.word;
     const isCorrect = correctWord === chosenWord;
     if (isCorrect) {
-      console.log("Right!");
       this.setIsAnswered();
       this.view.giveFeedBack(isCorrect, event);
       setTimeout(() => this.checkWinner(event), 1000);
     } else {
-      console.log("LOSER!");
       this.view.giveFeedBack(isCorrect, event);
-      this.setIsGameOver();
       setTimeout(() => {
         this.view.removeFeedback();
         this.view.toggleScene('GameOver');
@@ -77,17 +68,11 @@ export class Controller {
     }
   };
 
-  //Set isWinner of vocabmodal to true
-  setIsWinner() {
-    this.vocabmodel.isWinner = true;
-  }
-
   //Check if all vocab were answered
   checkWinner() {
     const list = this.vocabmodel.vocabList;
     const isWinner = list.every((vocab) => vocab.isAnswered);
     if (isWinner) {
-      this.setIsWinner();
       console.log("Winner");
       this.view.removeFeedback();
       this.view.toggleScene('Winner');
@@ -111,23 +96,13 @@ export class Controller {
     this.setPossibleAnswers();
   }
 
-  // Set isGameOver property to true
-  setIsGameOver() {
-    this.vocabmodel.isGameOver = true;
-    console.log(this.vocabmodel.isGameOver);
-  }
-
   //Return values to their default forms
   resetGame() {
     const vm = this.vocabmodel;
     vm.correctAnswer = null;
     vm.possibleAnswers = [];
-    vm.isGameOver = false;
-    vm.isWinner = false;
     vm.vocabList.forEach((vocab) => (vocab.isAnswered = false));
-    console.log(vm.vocabList);
     this.startNewRound();
-    console.log("New Game has started");
   }
 
   //Start a new game
