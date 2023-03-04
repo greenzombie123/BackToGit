@@ -72,7 +72,7 @@ export class Controller {
       this.setIsGameOver();
       setTimeout(() => {
         this.view.removeFeedback();
-        this.view.toggleGameOverSceneRendering();
+        this.view.toggleScene('GameOver');
       }, 1000);
     }
   };
@@ -90,7 +90,7 @@ export class Controller {
       this.setIsWinner();
       console.log("Winner");
       this.view.removeFeedback();
-      this.view.toggleWinnerSceneRendering();
+      this.view.toggleScene('Winner');
     } else {
       this.startNewRound();
       this.view.render();
