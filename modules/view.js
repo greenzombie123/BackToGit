@@ -38,10 +38,7 @@ export class View {
   playSound = (sound) => {
     const audio = new Audio(sound);
     console.log(sound, audio);
-    audio.addEventListener("canplaythrough", () => {
-      console.log("ok!");
-      audio.play();
-    });
+    audio.play();
   };
 
   //Show feedback by showing checkmakr or x mark
